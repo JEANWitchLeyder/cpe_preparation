@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+    int number1, number2;
+    while(cin>>number1>>number2){
+        if(number1==0 || number2 == 0){
+            break;
+        }
+        int carry = 0, carryOperations = 0;
+        while(number1 > 0 || number2 > 0){
+             //find Digits 
+        int digit1 = number1 % 10;
+        int digit2 = number2 % 10;
+        
+        int sum = digit1 + digit2 + carry;
+
+        if(sum >= 10){
+            carry = 1;
+            carryOperations++;
+        }else{
+            carry = 0;
+        }
+        //last digit
+        number1 /= 10;
+        number2 /= 10;
+        }
+
+        if(carryOperations == 0){
+           cout << "No carry operation.\n";
+        }else if(carryOperations == 1){
+            cout << "1 carry operations.\n";        
+        }else{
+            cout << carryOperations <<" operations.\n";
+        }
+    }
+    return 0;
+}
